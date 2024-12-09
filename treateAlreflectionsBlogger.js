@@ -1,6 +1,7 @@
 (function() {
     // Define the resources in a JSON-like structure
     const resources = [
+        { type: 'js', url: 'https://cdn.jsdelivr.net/npm/marked/marked.min.js' },
         { type: 'js', url: 'https://reserve-cc2.pages.dev/treateBloggerMarkdown.js' },
         { type: 'css', url: 'https://reserve-cc2.pages.dev/pullAtinasResults.css' },
         { type: 'js', url: 'https://reserve-cc2.pages.dev/pullAtinasResults.js' },
