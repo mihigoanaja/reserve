@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
-        <loc>https://www.alreflections.net/feeds/posts/default</loc>
+        <loc>https://www.alreflections.net/sitemap.xml</loc>
     </sitemap>
     <sitemap>
-        <loc>https://news.alreflections.net/feeds/posts/default</loc>
+        <loc>https://news.alreflections.net/sitemap.xml</loc>
     </sitemap>
     <sitemap>
-        <loc>https://services.alreflections.net/feeds/posts/default</loc>
+        <loc>https://services.alreflections.net/sitemap.xml</loc>
     </sitemap>
     <sitemap>
-        <loc>https://products.alreflections.net/feeds/posts/default</loc>
+        <loc>https://products.alreflections.net/sitemap.xml</loc>
     </sitemap>
     <sitemap>
-        <loc>https://books.products.alreflections.net/feeds/posts/default</loc>
+        <loc>https://books.products.alreflections.net/sitemap.xml</loc>
     </sitemap>
     <sitemap>
-        <loc>https://templates.products.alreflections.net/feeds/posts/default</loc>
+        <loc>https://templates.products.alreflections.net/sitemap.xml</loc>
     </sitemap>
     <sitemap>
-        <loc>https://websites.products.alreflections.net/feeds/posts/default</loc>
+        <loc>https://websites.products.alreflections.net/sitemap.xml</loc>
     </sitemap>
     <sitemap>
-        <loc>https://apiconsole.alreflections.net/feeds/posts/default</loc>
+        <loc>https://apiconsole.alreflections.net/sitemap.xml</loc>
     </sitemap>
     <sitemap>
-        <loc>https://community.alreflections.net/feeds/posts/default</loc>
+        <loc>https://community.alreflections.net/sitemap.xml</loc>
     </sitemap>
     <sitemap>
-        <loc>https://technologies.alreflections.net/feeds/posts/default</loc>
+        <loc>https://technologies.alreflections.net/sitemap.xml</loc>
     </sitemap>
     <sitemap>
-        <loc>https://dah.alreflections.net/feeds/posts/default</loc>
+        <loc>https://dah.alreflections.net/sitemap.xml</loc>
     </sitemap>
     <sitemap>
-        <loc>https://adc.alreflections.net/feeds/posts/default</loc>
+        <loc>https://adc.alreflections.net/sitemap.xml</loc>
     </sitemap>
 	<sitemap>
         <loc>https://mihigoanaja.alreflections.net/sitemap.xml</loc>
     </sitemap>
 	<sitemap>
-        <loc>https://blog.mihigoanaja.alreflections.net/feeds/posts/default</loc>
+        <loc>https://blog.mihigoanaja.alreflections.net/sitemap.xml</loc>
     </sitemap>
 </sitemapindex>
