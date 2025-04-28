@@ -1,0 +1,16 @@
+.yepper-ad-empty {
+    display: flex;
+    flex-direction: row;
+}
+.yepper-ad-empty-title {
+    width: 100%;
+}
+.yepper-ad-empty-text {
+    width: 30%;
+}
+.yepper-ad-empty-link {
+    width: 40%;
+}
+.yepper-ad-language-selector {
+    display: none!important;
+}
