@@ -6,6 +6,9 @@ Array.from(document.getElementsByClassName('atinas-results')).forEach((resultsCo
 		.then(data => {
 			resultsContainer.innerHTML = '';
 			let resultCount = 0;
+			if (resultsContainer.classList.contains('reverse')) {
+				data.reverse();
+			}
 			data.forEach(result => {
 				resultCount++;
 				const resultHTML = `
