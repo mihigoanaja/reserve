@@ -87,4 +87,6 @@
     });
   });
 })();
-document.body.innerHTML+=`<style>#main-menu .widget, #main-menu .widget > h3 {display: block;}</style>`;
+var mmstyle=document.createElement('style');
+mmstyle.innerHTML="#main-menu .widget, #main-menu .widget > h3 {display: block;}";
+document.body.appendChild(mmstyle);
