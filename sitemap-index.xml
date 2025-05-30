@@ -42,4 +42,44 @@
 	<sitemap>
         <loc>https://blog.mihigoanaja.alreflections.net/sitemap.xml</loc>
     </sitemap>
+
+    <sitemap>
+        <loc>https://www.alreflections.net/feeds/posts/default</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://news.alreflections.net/feeds/posts/default</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://services.alreflections.net/feeds/posts/default</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://products.alreflections.net/feeds/posts/default</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://books.products.alreflections.net/feeds/posts/default</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://templates.products.alreflections.net/feeds/posts/default</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://websites.products.alreflections.net/feeds/posts/default</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://apiconsole.alreflections.net/feeds/posts/default</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://community.alreflections.net/feeds/posts/default</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://technologies.alreflections.net/feeds/posts/default</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://dah.alreflections.net/feeds/posts/default</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://adc.alreflections.net/feeds/posts/default</loc>
+    </sitemap>
+	<sitemap>
+        <loc>https://blog.mihigoanaja.alreflections.net/feeds/posts/default</loc>
+    </sitemap>
 </sitemapindex>
