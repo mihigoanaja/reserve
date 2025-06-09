@@ -3,7 +3,7 @@
     const resources = [
         { type: 'js', url: 'https://cdn.jsdelivr.net/npm/marked/marked.min.js' },
         { type: 'js', url: 'https://reserve-cc2.pages.dev/treateBloggerMarkdown.js' },
-        { type: 'css', url: 'https://reserve-cc2.pages.dev/pullAtinasResults.css' },
+        { type: 'css', url: 'https://reserve-cc2.pages.dev/pullAtinasResults-V2.css' },
         { type: 'js', url: 'https://reserve-cc2.pages.dev/pullAtinasResults-V2.js' },
         { type: 'css', url: 'https://showcaseitchio.pages.dev/showcaseItchio.css' },
         { type: 'js', url: 'https://showcaseitchio.pages.dev/showcaseItchio.js' }
