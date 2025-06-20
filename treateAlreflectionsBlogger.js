@@ -2,7 +2,7 @@
     // Define the resources in a JSON-like structure
     const resources = [
         { type: 'js', url: 'https://cdn.jsdelivr.net/npm/marked/marked.min.js' },
-        { type: 'js', url: 'https://reserve-cc2.pages.dev/treateBloggerMarkdown.js' },
+        { type: 'js', url: 'https://reserve-cc2.pages.dev/treateBloggerMarkdown-V2.js' },
         { type: 'css', url: 'https://reserve-cc2.pages.dev/pullAtinasResults-V2.css' },
         { type: 'js', url: 'https://reserve-cc2.pages.dev/pullAtinasResults-V2.js' },
         { type: 'css', url: 'https://showcaseitchio.pages.dev/showcaseItchio.css' },
