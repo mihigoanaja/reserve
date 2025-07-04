@@ -87,6 +87,10 @@
     });
   });
 })();
+(function activateSearchbar(){
+  $(".hide-search")[0].onclick=()=>{$("#nav-search")[0].style.display='none';}
+    $(".show-search")[0].onclick=()=>{$("#nav-search")[0].style.display='block';}
+})();
 var mmstyle=document.createElement('style');
 mmstyle.innerHTML="#main-menu .widget, #main-menu .widget > h3 {display: block;}";
 document.body.appendChild(mmstyle);
