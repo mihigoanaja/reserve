@@ -30,7 +30,7 @@
               </div>
             `;
 
-            if (!r.dataset.limit || resultCount <= parseInt(r.dataset.limit, 10)) {
+            if (!r.dataset.limit || resultCount <= parseInt(r.dataset.limit)) {
               resultsContainer.innerHTML += productHTML;
             }
           });
