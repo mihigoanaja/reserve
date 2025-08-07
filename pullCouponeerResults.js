@@ -1,7 +1,7 @@
 (function loadCouponeerAds() {
     Array.from(document.getElementsByClassName('couponeer-results')).forEach(resultsContainer => {
       const r = resultsContainer;
-      if (r.innerHTML!="") continue;
+      if (r.innerHTML!="") return;
 
       const query = encodeURIComponent(r.dataset.query || 'discounts');
       const coupon = encodeURIComponent(r.dataset.coupon || '');
@@ -40,5 +40,4 @@
           resultsContainer.innerHTML = '<p>Error loading content.</p>';
         });
     });
-  }
-});)();
+  })();
