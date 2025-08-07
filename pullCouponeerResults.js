@@ -1,6 +1,7 @@
 (function loadCouponeerAds() {
     Array.from(document.getElementsByClassName('couponeer-results')).forEach(resultsContainer => {
       const r = resultsContainer;
+      if (r.innerHTML!="") continue;
 
       const query = encodeURIComponent(r.dataset.query || 'discounts');
       const coupon = encodeURIComponent(r.dataset.coupon || '');
