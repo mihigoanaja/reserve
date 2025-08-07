@@ -23,7 +23,7 @@
             const showImage = r.dataset.showImage === 'yes' ? '' : 'display:none;';
             const productHTML = `
               <div class='result'>
-                <img src='${product.image}' style='width:100%; max-height:200px; object-fit:cover; ${showImage}' />
+                <img src='${product.image}' style='${showImage}' />
                 <h2>${product.title}</h2>
                 <p class='description'>${product.description}</p>
                 <a class='button' href='${product.link}' target='_blank'>Buy Now</a>
@@ -37,7 +37,7 @@
         })
         .catch(error => {
           console.error('Error fetching Couponeer data:', error);
-          resultsContainer.innerHTML = '<p>Error loading ads.</p>';
+          resultsContainer.innerHTML = '<p>Error loading content.</p>';
         });
     });
   }
