@@ -7,8 +7,7 @@
         { type: 'js', url: 'https://reserve-cc2.pages.dev/pullAtinasResults-V2.js' },
         { type: 'css', url: 'https://showcaseitchio.pages.dev/showcaseItchio.css' },
         { type: 'js', url: 'https://showcaseitchio.pages.dev/showcaseItchio.js' },
-        { type: 'js', url: 'https://onetag.pages.dev/xpopup.js' },
-        { type: 'js', url: 'https://onetag.pages.dev/alreflections-poa-buttons.js' }
+        { type: 'js', url: 'https://onetag.pages.dev/xpopup.js' }
     ];
 
     // Loop through the resources and add them to the document
