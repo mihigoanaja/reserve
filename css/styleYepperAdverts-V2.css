@@ -1,6 +1,6 @@
 .yepper-ad-empty {
     background-image: linear-gradient(135deg, #efe 0%, #eff 100%);
-    box-shadow: inset 0 0 50px #6665, inset 0 0 3px #333;
+    box-shadow: inset 0 0 10px #6665, inset 0 0 3px #333;
     border-radius: 0px;
 }
 
