@@ -1,6 +1,6 @@
 Array.from(document.getElementsByClassName('atinas-results')).forEach((resultsContainer)=>{
 	let r = resultsContainer;
-	let url = ['https://apiproxy.alreflections.net/atinas/search?dq=', r.dataset.query, '&type=', r.dataset.search].join("");
+	let url = ['https://atinasapi.eranajam123.workers.dev/?dq=', r.dataset.query, '&type=', r.dataset.search].join("");
 	fetch(url)
 		.then(response => response.json())
 		.then(data => {
