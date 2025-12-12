@@ -78,7 +78,8 @@ body {
 .products .product img {
 	height: 156px;
 }
-.products .product .cart-btn {
+.products .product .cart-btn,
+.products .product .preview-btn {
 	display: flex;
 	background-color: #393;
 	text-decoration: none;
@@ -86,9 +87,10 @@ body {
 	color: #fff;
 	padding: 7px;
 	justify-content: center;
-	border-radius: 12px;
+	border-radius: 5px;
 	font-weight: bold;
 	margin-top: 6px;
+	width: fit-content;
 }
 .products .product:hover .cart-btn {
 	background-color: #f90;
