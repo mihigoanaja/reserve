@@ -78,6 +78,11 @@ body {
 .products .product img {
 	height: 156px;
 }
+.products .product .product-btns {
+	display: flex;
+	gap: 5px;
+	justify-content: center;
+}
 .products .product .cart-btn,
 .products .product .preview-btn {
 	display: flex;
