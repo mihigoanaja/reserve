@@ -1,6 +1,9 @@
-Array.from(document.getElementsByClassName('atinas-results')).forEach((resultsContainer)=>{
+Array.from(document.getElementsByClassName('atinas-results')).forEach(async (resultsContainer)=>{
 	let r = resultsContainer;
-	let url = ['https://atinasapi.eranajam123.workers.dev/?dq=', r.dataset.query, '&type=', r.dataset.search].join("");
+    let renderer=await fetch("https://reserve.alreflections.net/json/atinas-apis.json");
+    let apijson=await renderer.json();
+    let apiurl=apijson[parseInt(Math.random()*(apijson.length-1))];
+	let url = [apiurl,'?dq=', r.dataset.query, '&type=', r.dataset.search].join("");
 	fetch(url)
 		.then(response => response.json())
 		.then(data => {
