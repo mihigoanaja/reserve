@@ -231,3 +231,9 @@ body {
 	width: 78px;
 	height: 42px;
 }
+.icon-btn span {
+	display: none;
+}
+.icon-btn:hover span {
+	display: inline-block;
+}
