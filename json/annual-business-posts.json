@@ -1,5 +1,6 @@
 [
-  { // January
+  /* START OF JANUARY */
+  {
     "title": "Customers vote with their wallets",
     "content": "Feedback can be polite and applause can be misleading, but money never lies. When a customer pays, they are making a real decision under real constraints. That decision reflects trust, urgency, and perceived value. Watch carefully where money flows easily and where it hesitates. The market speaks most clearly through transactions, not compliments."
   },
@@ -118,7 +119,8 @@
   {
     "title": "Business rewards patience with direction",
     "content": "Rushed choices create detours. Observation reveals patterns. Patience allows understanding to deepen. Direction emerges through reflection. Steady thinking guides strong action."
-  }
+  },
+    /* END OF JANUARY */
 
 
 
