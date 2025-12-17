@@ -1,5 +1,4 @@
 [
-  /* START OF JANUARY */
   {
     "title": "Customers vote with their wallets",
     "content": "Feedback can be polite and applause can be misleading, but money never lies. When a customer pays, they are making a real decision under real constraints. That decision reflects trust, urgency, and perceived value. Watch carefully where money flows easily and where it hesitates. The market speaks most clearly through transactions, not compliments."
@@ -124,8 +123,6 @@
     "title": "Clarity attracts opportunity",
     "content": "Opportunities are rarely random; they are drawn to clarity. When your direction is clear, people understand how to help you. Vague goals confuse potential partners and supporters. Clear intent acts like a signal in a noisy market. The sharper the signal, the stronger the response."
   },
-    /* END OF JANUARY */
-    /* START OF FEBRUARY */
   {
     "title": "Decision-making defines leadership",
     "content": "Leaders are remembered less for ideas and more for decisions. Indecision quietly drains momentum and confidence. Even imperfect decisions move teams forward. What matters most is learning and adjusting quickly. Leadership is courage practiced repeatedly."
@@ -242,8 +239,6 @@
     "title": "Progress favors consistency over intensity",
     "content": "Short bursts fade quickly. Consistent effort compounds over time. Reliability outperforms extremes. Small actions repeated daily build momentum. Consistency wins quietly."
   },
-    /* END OF FEBRUARY */
-    /* START OF MARCH */
   {
     "title": "Clarity sharpens execution",
     "content": "Clarity is not just about knowing what you want, but about knowing what you will not pursue. When goals are clear, decisions become faster and cleaner. Teams waste less energy guessing priorities and more energy executing them. Confusion breeds hesitation, and hesitation slows momentum. Clear direction turns effort into measurable progress."
@@ -363,6 +358,5 @@
   {
     "title": "Endurance defines success",
     "content": "Short-lived wins fade quickly. Endurance sustains relevance. Staying power outlasts trends. Long-term presence builds authority. Success favors those who remain."
-  },
-    /* END OF MARCH */
+  }
 ]
