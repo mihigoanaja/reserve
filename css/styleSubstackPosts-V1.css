@@ -12,3 +12,6 @@ table.email-body-container .post.typography:has(.post-header),
 table.email-body-container ~ *:empty {
     display: none;
 }
+table.email-body-container div {
+    max-width: 100%!important;
+}
