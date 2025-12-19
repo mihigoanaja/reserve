@@ -1,0 +1,14 @@
+table.email-body-container,
+table.email-body-container td {
+    border-style: none;
+}
+td.content table[role="presentation"],
+table.email-body-container .subscription-widget-wrap,
+table.email-body-container .post-cta.typography.markup,
+table.email-body-container .footer.footer-ZM59BM,
+table.email-body-container *:empty,
+p:has(~ table.email-body-container),
+table.email-body-container .post.typography:has(.post-header),
+table.email-body-container ~ *:empty {
+    display: none;
+}
