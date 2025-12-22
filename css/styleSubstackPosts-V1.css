@@ -9,7 +9,8 @@ table.email-body-container .footer.footer-ZM59BM,
 table.email-body-container *:empty,
 p:has(~ table.email-body-container),
 table.email-body-container .post.typography:has(.post-header),
-table.email-body-container ~ *:empty {
+table.email-body-container ~ *:empty,
+.pencraft.pc-paddingTop-16.pc-reset {
     display: none;
 }
 table.email-body-container div {
