@@ -7,7 +7,7 @@
         { type: 'js', url: 'https://reserve-cc2.pages.dev/pullAtinasResults-V3.js' },
         { type: 'css', url: 'https://showcaseitchio.pages.dev/showcaseItchio.css' },
         { type: 'js', url: 'https://showcaseitchio.pages.dev/showcaseItchio-V2.js' },
-        { type: 'js', url: 'https://onetag.pages.dev/xpopup.js' },
+        { type: 'js', url: 'https://onetag.pages.dev/xpopup-V2.js' },
         { type: 'js', url: 'https://onetag.pages.dev/alreflections-poa-buttons-V3.js' },
         { type: 'css', url: 'https://reserve-cc2.pages.dev/css/styleYepperAdverts-V2.css' },
         { type: 'js', url: 'https://onetag.pages.dev/xAnchor.js' },
