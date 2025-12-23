@@ -2,7 +2,7 @@ Array.from(document.getElementsByClassName('atinas-results')).forEach(async (res
 	let r = resultsContainer;
     let renderer=await fetch("https://reserve.alreflections.net/json/atinas-apis.json");
     let apijson=await renderer.json();
-    let apiurl=apijson[parseInt(Math.random()*(apijson.length-1))];
+    let apiurl=apijson[parseInt(Math.random()*(apijson.length))];
 	let url = [apiurl,'?dq=', r.dataset.query, '&type=', r.dataset.search].join("");
 	fetch(url)
 		.then(response => response.json())
