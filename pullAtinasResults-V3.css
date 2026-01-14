@@ -1,0 +1,79 @@
+.atinas-results .result {
+	margin-bottom: 20px;
+	padding: 10px;
+	border-bottom: 1px solid #ccc;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	margin: 20px;
+	padding: 20px;
+	width: 250px;
+}
+.atinas-results .description {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+}
+.atinas-results .result h2 {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+.atinas-results {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.atinas-results .button {
+	background-color: #4CAF50;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.atinas-results .result .placeholder {
+	background-color: #bbb;
+	width: 100%;
+	height: 30px;
+	border-radius: 30px;
+	background-image: linear-gradient(45deg, #666, #0000);
+	animation: load 0.2s;
+	animation-iteration-count: infinite;
+}
+.atinas-results.list .result {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+.atinas-results.list .result .description {
+	display: none;
+}
+.atinas-results.list.reverse {
+	max-width: 90%;
+	width: -webkit-fill-available;
+}
+.atinas-results.list.reverse {
+	flex-direction: column-reverse;
+}
+.atinas-results .result img {
+	width: 100%;
+}
+.atinas-results .result img {
+	max-height: 150px;
+}
+.pba-btn {
+	display: flex;
+	width: 100%;
+	padding: 0px 20px;
+	color: #999;
+	text-decoration: underline;
+}
+.atinas-results:has(.pba-btn) {
+	padding: 10px;
+	box-shadow: inset 0 0 3px #0003,0 0 3px #0003;
+	margin: 10px;
+}
