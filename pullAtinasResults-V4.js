@@ -14,20 +14,24 @@ Array.from(document.getElementsByClassName('atinas-results')).forEach(async (res
 			}
 			data.forEach(result => {
 				resultCount++;
-				const resultHTML = `
-					<div class='result'>
-						<img src='${result.image}' style='${(r.dataset.showImage=="yes")||"display:none;"}'/>
-						<h2>${result.title}</h2>
-						<p class='description'>${result.description}</p>
-						<a class='button' href='${result.link}' target='_blank'>Read More</a>
-					</div>
+				var resultDiv=document.createElement("div");
+				resultDiv.classList.add("result");
+				resultDiv.innerHTML= `
+					<img src='${result.image}' style='${(r.dataset.showImage=="yes")||"display:none;"}'/>
+					<h2>${result.title}</h2>
+					<p class='description'>${result.description}</p>
+					<a class='button' href='${result.link}' target='_blank'>Read More</a>
 				`;
 				if ((resultsContainer.dataset.limit == undefined) || (resultsContainer.dataset.limit >= resultCount)) {
-					resultsContainer.innerHTML += resultHTML;
+					resultsContainer.appendChild(resultDiv);
 				}
 			});
             if (resultsContainer.innerHTML!='') {
-                resultsContainer.innerHTML+='<a href="https://atinas.alreflections.net" class="pba-btn"><i><b>Powered By Atinas</b> - Alreflections&#39; Search Engine</i></a>';
+				var pbaBtn=document.createElement("a");
+				pbaBtn.href="https://atinas.alreflections.net";
+				pbaBtn.classList.add("pba-btn");
+				pbaBtn.innerHTML='<i><b>Powered By Atinas</b> - Alreflections&#39; Search Engine</i>';
+				resultsContainer.appendChild(pbaBtn);
             }
 		})
 		.catch(error => console.error('Error:', error));
