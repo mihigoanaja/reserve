@@ -16,3 +16,6 @@ table.email-body-container ~ *:empty,
 table.email-body-container div {
     max-width: 100%!important;
 }
+.post-body.post-content li>p {
+    display: inline-block;
+}
