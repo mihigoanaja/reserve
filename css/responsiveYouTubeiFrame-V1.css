@@ -1,10 +1,10 @@
-div:has(>iframe[src*="youtube.com"]) {
+.post-body div:has(>iframe[src*="youtube.com"]) {
     position: relative;
     width: 100%;
     padding: 0px;
     padding-top: 56%;
 }
-div>iframe[src*="youtube.com"] {
+.post-body div>iframe[src*="youtube.com"] {
     position: absolute;
     top: 0;
     left: 0;
