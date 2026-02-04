@@ -14,7 +14,8 @@
         { type: 'js', url: 'https://onetag.pages.dev/xBrendIn.js' },
         //{ type: 'js', url: 'https://onetag.pages.dev/xBlockInbound.js' },
         { type: 'css', url: 'https://reserve-cc2.pages.dev/css/styleSubstackPosts-V1.css' },
-        { type: 'js', url: 'https://onetag.pages.dev/atinas-analytics.js' }
+        { type: 'js', url: 'https://onetag.pages.dev/atinas-analytics.js' },
+        { type: 'css', url: 'https://reserve-cc2.pages.dev/css/responsiveYouTubeiFrame-V1.css' }
     ];
 
     // Loop through the resources and add them to the document
