@@ -18,6 +18,7 @@ function containsMarkdown(str) {
 (()=>{
   a=new marked.Marked();
   marker=a.parse;
+  if (!((document.getElementById("post-body")||document.getElementsByClassName("post-body")[0]).getElementsByClassName("not-markdown")[0]||false)) return;
   var text = (document.getElementById("post-body")||document.getElementsByClassName("post-body")[0]).innerHTML;
   if (containsMarkdown(text)) {
     var html = marker(text);
