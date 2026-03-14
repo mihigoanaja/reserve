@@ -20,7 +20,8 @@ function containsMarkdown(str) {
   marker=a.parse;
   if ((document.getElementById("post-body")||document.getElementsByClassName("post-body")[0]).getElementsByClassName("not-markdown")[0]||false) return;
   var text = (document.getElementById("post-body")||document.getElementsByClassName("post-body")[0]).innerHTML;
-  if (containsMarkdown(text)) {
+  var test = (document.getElementById("post-body")||document.getElementsByClassName("post-body")[0]).innerText;
+  if (containsMarkdown(test)) {
     var html = marker(text);
     
     // Display the HTML
