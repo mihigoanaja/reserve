@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Book Planner</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 20px;
+			}
+			h1 {
+				text-align: center;
+			}
+			.topic {
+				margin-bottom: 10px;
+				border: 1px solid #ccc;
+				padding: 10px;
+				display: flex;
+			}
+			.topic input {
+				width: 100%;
+				font-size: 20px;
+				padding: 10px;
+			}
+			button {
+				padding: 10px 20px;
+				background-color: #4CAF50;
+				color: white;
+				border: none;
+				cursor: pointer;
+			}
+			.title {
+				margin-bottom: 10px;
+				background-color: #ade;
+				padding: 10px;
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				border-radius: 3px;
+			}
+			.title div {
+				display: flex;
+			}
+			.title.top {
+				background-color: #7af;
+				font-weight: bold;
+			}
+			[class*="-button"] {
+				margin-left: 10px;
+				cursor: pointer;
+				padding: 5px;
+				font-family: monospace;
+				font-weight: bold;
+				border-radius: 3px;
+				display: flex;
+				align-items: center;
+			}
+			.select-button {
+				background-color: #4CAF50;
+			}
+			.delete-button {
+				background-color: #f44;
+			}
+			.add-button {
+				margin-left: 10px;
+				cursor: pointer;
+				background-color: #a94;
+				color: #fff;
+				padding: 5px;
+				font-family: monospace;
+				font-weight: bold;
+				border-radius: 3px;
+				display: flex;
+				align-items: center;
+			}
+			#back-btn {
+				background-color: #a94;
+				color: #fff;
+			}
+			.topic div {
+				display: flex;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Book Planner</h1>
+		<div id="book-setup"></div>
+		<div id="controls">
+			<button id="add-topic">Add Topic</button>
+			<button id="save-book">Save Book</button>
+			<button id="back-btn">Go Back</button>
+		</div>
+		<script>
+			var bookTitle;
+			// Function to load book data from local storage
+			function loadBookData() {
+				var bookData = JSON.parse(localStorage.getItem('Book_Planner_books'))[bookIndex].content || [];
+				return bookData;
+			}
+			// Function to load book name from local storage
+			function loadBookName() {
+				var bookData = JSON.parse(localStorage.getItem('Book_Planner_books'))[bookIndex].title || "";
+				return bookData;
+			}
+			// Function to save book data to local storage
+			function saveBookData(bookData) {
+				var curData=JSON.parse(localStorage.getItem('Book_Planner_books'));
+				curData[bookIndex].content=bookData;
+				localStorage.setItem('Book_Planner_books', JSON.stringify(curData));
+			}
+			// Function to display the Book Planner
+			function displayBookSetup() {
+				const bookSetup = document.getElementById('book-setup');
+				var bookData = loadBookData();
+				//bookData=(bookData!=[])?bookData:['Anaja'];
+				bookSetup.innerHTML = '';
+				var nameDiv=document.createElement('div');
+				nameDiv.innerHTML=`<h2>Book Title: <span>${loadBookName()}<\/span><\/h2>`;
+				bookSetup.appendChild(nameDiv);
+				bookData.forEach((topic, index) => {
+					const topicDiv = createTopicDiv(topic, index);
+					bookSetup.appendChild(topicDiv);
+				});
+				controls.style.display="";
+			}
+			// Function to create a new topic div
+			function createTopicDiv(topic, index) {
+				const topicDiv = document.createElement('div');
+				topicDiv.classList.add('topic');
+				const topicTextarea = document.createElement('input');
+				topicTextarea.placeholder = 'Enter the topic';
+				topicTextarea.value = topic.topic || '';
+				topicTextarea.addEventListener('input', (event) => {
+					updateTopicData(index, event.target.value);
+				});
+				topicDiv.appendChild(topicTextarea);
+				const span = document.createElement('div');
+				span.innerHTML=`<span class="delete-button" onclick="deleteTopic(${index})">Delete<\/span>`;
+				topicDiv.appendChild(span);
+				return topicDiv;
+			}
+			// Function to update topic data in the book data array
+			function updateTopicData(index, value) {
+				const bookData = loadBookData();
+				bookData[index].topic = value;
+				saveBookData(bookData);
+			}
+			// Function to add a new topic
+			function addTopic() {
+				const bookData = loadBookData();
+				bookData.push({ topic: '' });
+				saveBookData(bookData);
+				displayBookSetup();
+			}
+			// Function to remove a topic
+			function deleteTopic(index) {
+				const bookData = loadBookData();
+				bookData.splice(index,1);
+				//bookData.push({ topic: '' });
+				saveBookData(bookData);
+				displayBookSetup();
+			}
+			// Function to save the book data
+			function saveBook() {
+				// Add your logic here to handle saving the book data to a server or perform other actions
+				// For simplicity, we are just displaying an alert here.
+				alert('Book data saved!');
+			}
+			document.getElementById('add-topic').addEventListener('click', addTopic);
+			document.getElementById('save-book').addEventListener('click', saveBook);
+			document.getElementById('back-btn').addEventListener('click', displayBooks);
+			// Display the initial Book Planner
+			//if (bookTitle!=undefined) {
+				//displayBookSetup();
+			//}
+			
+			// Load All Books
+			function loadBooks() {
+				return JSON.parse(localStorage.getItem('Book_Planner_books')) || [];
+			}
+	
+			// Function to display all the book
+			function displayBooks() {
+				const books = document.getElementById('book-setup');
+				const bookData = loadBooks();
+				books.innerHTML = '';
+				var nameDiv=document.createElement('div');
+				nameDiv.classList.add('title');
+				nameDiv.classList.add('top');
+				nameDiv.innerHTML=`<span>Your Books<\/span><span class="add-button" onclick="addBook()">Add New Book<\/span>`;
+				books.appendChild(nameDiv);
+				bookData.forEach((title, index) => {
+					const bookDiv = createBookDiv(title, index);
+					books.appendChild(bookDiv);
+				});
+				controls.style.display="none";
+			}
+			
+			 // Function to create a new book div
+			function createBookDiv(title, index) {
+				const bookDiv = document.createElement('div');
+				bookDiv.classList.add('title');
+				
+				const topicTextarea = document.createElement('div');
+				topicTextarea.innerHTML=title.title;
+				bookDiv.appendChild(topicTextarea);
+				const actionsDiv = document.createElement('div');
+				actionsDiv.innerHTML=`
+										<span class="select-button" onclick="selectBook(${index})">Select<\/span>
+										<span class="delete-button" onclick="deleteBook(${index})">Delete<\/span>
+									`;
+				bookDiv.appendChild(actionsDiv);
+				
+				return bookDiv;
+			}
+			// Select a book
+			function selectBook(index) {
+				bookTitle=(loadBooks())[index];
+				bookIndex=index;
+				displayBookSetup();
+			}
+			function deleteBook(index) {
+				if (confirm("Are you sure you want to delete this book?")) {
+					var books=loadBooks();
+					books.splice(index,1);
+					localStorage['Book_Planner_books']=JSON.stringify(books);
+					displayBooks();
+				}
+			}
+			// Add a new book
+			function addBook() {
+				var bookName=prompt("Book Name:");
+				if (bookName!='') {
+					var books=loadBooks();
+					books.push({title:bookName,content:[{topic:""}]});
+					localStorage['Book_Planner_books']=JSON.stringify(books);
+					displayBooks();
+				}
+			}
+			displayBooks();
+		</script>
+	</body>
+</html>
