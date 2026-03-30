@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stopwatch</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+      }
+
+      #stopwatch {
+        font-size: 4em;
+        margin: 0 auto;
+        width: 200px;
+      }
+
+      button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        font-size: 16px;
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="stopwatch">00:00:00:00</div>
+    <button id="start" onclick="start()">Start</button>
+    <button id="pause" onclick="pause()">Pause</button>
+    <button id="lap" onclick="lap()">Lap</button>
+    <button id="stop" onclick="stop()">Stop</button>
+
+    <script>
+      let timer = null;
+      let start_time = null;
+      let elapsed_time = 0;
+      let laps = [];
+
+      function start() {
+        start_time = new Date();
+        timer = setInterval(update_stopwatch, 10);
+        document.getElementById("start").disabled = true;
+        document.getElementById("pause").disabled = false;
+        document.getElementById("lap").disabled = false;
+        document.getElementById("stop").disabled = false;
+      }
+
+      function pause() {
+        clearInterval(timer);
+        timer = null;
+        elapsed_time += new Date() - start_time;
+        document.getElementById("start").disabled = false;
+        document.getElementById("pause").disabled = true;
+        document.getElementById("lap").disabled = true;
+      }
+
+      function lap() {
+        laps.push(elapsed_time + (new Date() - start_time));
+        update_laps();
+      }
+
+      function stop() {
+        clearInterval(timer);
+        timer = null;
+        elapsed_time += new Date() - start_time;
+        document.getElementById("start").disabled = false;
+        document.getElementById("pause").disabled = true;
+        document.getElementById("lap").disabled = true;
+        document.getElementById("stop").disabled = true;
+      }
+
+      function update_stopwatch() {
+        let current_time = new Date() - start_time + elapsed_time;
+        let milliseconds = current_time % 1000;
+        current_time = Math.floor(current_time / 1000);
+        let seconds = current_time % 60;
+        current_time = Math.floor(current_time / 60);
+        let minutes = current_time % 60;
+        current_time = Math.floor(current_time / 60);
+        let hours = current_time % 24;
+
+        document.getElementById("stopwatch").innerHTML = pad(hours) + ":" + pad(minutes) + ":" + pad(seconds) + ":" + pad(milliseconds, 3);
+      }
+
+      function pad(number, length = 2) {
+        return (number + "").padStart(length, "0");
+      }
+
+      function update_laps() {
+        let lap_times = "";
+        for (let i = 0; i < laps.length; i++) {
+          lap_times += "<li>" + pad(i + 1) + ": " + format_time(laps[i]) + "</li>";
+        }
+        document.getElementById("lap_times").innerHTML = lap_times;
+      }
+
+      function format_time(time) {
+        let milliseconds = time % 1000;
+        time = Math.floor(time / 1000);
+        let seconds = time % 60;
+	    time = Math.floor(time / 60);
+    let minutes = time % 60;
+    time = Math.floor(time / 60);
+    let hours = time % 24;
+
+    return pad(hours) + ":" + pad(minutes) + ":" + pad(seconds) + ":" + pad(milliseconds, 3);
+  }
+</script>
+
+<ul id="lap_times"></ul>
+ </body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>CSV to HTML Table Converter</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		h1 {
+			text-align: center;
+		}
+		form {
+			display: flex;
+			margin-bottom: 20px;
+		}
+		form input[type="file"] {
+			flex-grow: 1;
+			font-size: 16px;
+			border: none;
+			box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+			outline: none;
+		}
+		form button {
+			padding: 10px 20px;
+			font-size: 16px;
+			background-color: #007bff;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+			cursor: pointer;
+			margin-left: 5px;
+		}
+		table {
+			border-collapse: collapse;
+			width: 100%;
+			max-width: 800px;
+			margin: 0 auto;
+		}
+		table th, table td {
+			padding: 10px;
+			border: 1px solid #ccc;
+			text-align: left;
+		}
+		table th {
+			background-color: #007bff;
+			color: #fff;
+		}
+		table tr:nth-child(even) {
+			background-color: #f2f2f2;
+			color: #000;
+		}
+		table tr:hover {
+			background-color: #ddd;
+		}
+		::-webkit-file-upload-button {
+			background-color: #09f;
+			border-width: 0px;
+			color: #ffa;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<h1>CSV to HTML Table Converter</h1>
+	<form>
+		<input type="file" id="csv-file" accept=".csv">
+		<button type="button" id="convert-csv">Convert</button>
+		<button type="button" id="download-csv">Download</button>
+	</form>
+	<div id="table-container"></div>
+	<script>
+		document.getElementById('convert-csv').addEventListener('click', function() {
+			let fileInput = document.getElementById('csv-file');
+			let file = fileInput.files[0];
+			let reader = new FileReader();
+			reader.onload = function() {
+				let csv = reader.result;
+				let lines = csv.split('\n');
+				let html = '<table>';
+				for (let i = 0; i < lines.length; i++) {
+					if (i === 0) {
+						html += '<thead>';
+					}
+					html += '<tr>';
+					let cells = lines[i].split(',');
+					for (let j = 0; j < cells.length; j++) {
+						if (i === 0) {
+							html += '<th>' + cells[j] + '</th>';
+						} else {
+							html += '<td>' + cells[j] + '</td>';
+						}
+					}
+					html += '</tr>';
+					if (i === 0) {
+						html += '</thead><tbody>';
+					}
+				}
+				html += '</tbody></table>';
+				document.getElementById('table-container').innerHTML = html;
+			};
+			reader.readAsText(file);
+		});
+		document.getElementById('download-csv').addEventListener('click', function() {
+			if (document.getElementById('table-container').innerHTML!='') {
+					var html=document.createElement('html');
+					html.innerHTML='<style>table{border-collapse:collapse;width:100%;max-width:800px;margin:0 auto;}table th,table td{padding:10px;border:1px solid #ccc;text-align:left;}table th{background-color:#007bff;color:#fff;}table tr:nth-child(even){background-color:#f2f2f2;color:#000;}table tr:hover{background-color:#ddd;}</style>';
+					html.innerHTML+=document.getElementById('table-container').innerHTML;
+					var blob=new Blob([html.outerHTML]);
+					var url=URL.createObjectURL(blob);
+					var anchor=document.createElement('a');
+					anchor.href=url;
+					anchor.download=document.getElementById('csv-file').files[0].name.replaceAll('.csv','.html');
+					anchor.click();
+			} else {
+				document.getElementById('convert-csv').click();
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>HTML Builder</title>
+		<style>
+			*:not([onclick]):not(a:any-link) {
+				cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAASCAYAAAHK/gXCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMWSURBVChTY8AAc8oj/kOZDAyiAlzxUCYDQ319PQtDpKvVAw1ZiU6QABNYGAZq4lzXrOwpAGlmBvEZJxeH/8sMdkeYBgNAg1C0Mq7uzPhfmhB8kCEvyM6rKNJzZkW83y+gBAeDjqJU0vTy6P8B9sY5EMUQYATEQhAmGmjLjhXeOqf944K6xP+pvnZlUGE4YMoOCBBe05v/d/P0yv+9JYl/1KVF8sEyFjIynGXRLj/nN2f99zRU+h/vbPBLmJszGyjFClaABFj0VOTqqxO8f7TmJf0N9nBohorjBjPT0ljRPQ4HSzpLi7fNaf3flxf2CMjlhYhCQaKHmdaC2rj/qzsz/0+vzfwnKcBjC5ViYAQRE0oTqrZNK/u/vKfof3qgy3WgkChDmo8xV26wwyk/a8OZ00tjf08tjfof6mxxC+gVY5AmBj9LrdB1fUX/w+30/gcZy//3tzY8BxRWAUuCAD8/v2CEs9GdFZ1Z/4tDHf9nhHjfBwpzQWShQFpERNXbWu96Y2rwv8aC9MdAIQmIDCoQ5GFjCxTm53aE8okGjPXx/gLdBTG+02vSeyeVxTUWhth7mKkI8YHkIErwAHt7eY7mdN/Ixa3ZLzdPr/2/rDnl/4Lq6P+zqxP/16WF7xDgYtUHKsMeKyBgD4zrqhgf34lFkS/XdGX9X9+f/39NX+H/eS25/xszo75Fe9itYGVl0AEqRRgSb2/PEeNqpuhnZqBlb6wm0lWZY72ovfjwpolF/7fNqPy/sDX7f1tu9J94H/sHBsoyfcA40QNqg6SyUGD+SfOxsmxM9ro6pSD4f1aA3X9fK/3/ETaa/wq9jf5Xhdr8ywt2+u5vZ3JBQUSgFqhLF6iNHawZCbDoqshbhLmYnZxSFv1nZWvi/77cgP9JLvr/I220/kc5m331tjZaLyPEZwZUi5G+kQGTlJSgrI2hZnWin92L3sLwPwubUv9PLI3/XxIb+D873PdLrLfDfC4uBkmoeryAhYODQ1ZdUSbJxVx3Z6SrxY3CmIBbqZGBK/i5wWmDE6KMeMAMxCC/g5IliMaRJhgYAN7V/u/upjz6AAAAAElFTkSuQmCC"),auto;
+			}
+		</style>
+		<link rel="stylesheet" href="\lock\coding\CSS\font-family-cursive.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\font-family-cooper.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\font-weight-bold.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\float-1.0.0.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\form-style-1.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\form-layout.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\showcase-layout.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\header-layout-2.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\screen-width-1.0.0.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\section-layout.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\stylemate-1.0.0.min.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\layer.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\modal-layout.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\normalise-1.css"/>
+		<script src="\lock\coding\html\js\minifyCSS.js"></script>
+		<style>
+			.border {
+				border: 1px solid #070;
+				margin-right: 10px;
+			}
+			.active {
+				box-shadow: 0 0 3px 1px #09f;
+			}
+			.margin-right-10 {
+				margin-right: 10px;
+			}
+			.font-family-webdings {
+				font-family: webdings;
+			}
+			.shadow-black {
+				box-shadow: 0 3px 5px #333;
+				margin-bottom: 5px;
+			}
+			.controls{background-color:#09f;margin-bottom:10px;}.controls .listener{display:inline-block;margin:10px;padding:10px;font-size:29px;font-family:impact;cursor:hand;}.controls .listener:any-link{text-decoration:none;color:#000;}.controls .container{width:fit-content;margin:auto;}.controls .listener:hover{color:#ffe;text-shadow:0 0 10px #000;text-transform:uppercase;}
+			.modal .container{background-color:#6bf;padding:10px;}.modal .section{background-color:#ffa;border:1px solid #00f;box-shadow:0 0 5px #000;}.modal .button{background-color:#ffe;width:fit-content;padding:10px;margin:auto;box-shadow:0 0 5px #000;border-radius:20px;}.modal .button:hover{cursor:hand;color:#ffe;background-color:#070;box-shadow:0 0 15px #fff;}
+			.clear{clear: both;}
+		</style>
+		<script>
+			function exportElementHTML(e,fn) {
+				var html=document.createElement('html');
+				html.innerHTML=e.innerHTML
+				var file=new Blob([html.outerHTML],{type:'text/html'});
+				var a=document.createElement('a');
+				a.href=URL.createObjectURL(file);
+				a.download=fn+".html";
+				a.click();
+				return true;
+			}
+			function resetHTML(e) {
+				e.innerHTML='';
+			}
+			function openFileInHTML(f,e) {
+				if (f)
+					f.text().then((t)=>e.innerHTML=t);
+			}
+			function openStylesInHTML(f,e){
+				var style="";
+				if (f.length) {
+					for (let s of f)
+						s.text().then((t)=>style+=t);
+					var  s=document.createElement('style');
+					s.innerHTML=minifyCSS(style);
+					e.appendchild(s);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="layer">
+			<div class="font-family-cooper font-size-30 padding-20 text-align-center">HTML Builder</div>
+			<div class="controls">
+				<div class="container">
+					<a class="listener" href="#upload">Upload</a>
+					<a class="listener" href="javascript:resetHTML(previewer)">Reset</a>
+					<a class="listener" href="#export">Export</a>
+				</div>
+			</div>
+			<div class="display-none">
+			</div>
+			<div class="display-flex screen-width-100">
+				<div class="screen-width-100 bgcolor-333 padding-10 font-size-25 font-family-cursive font-weight-bold color-ffa margin-right-10">Builder</div>
+				<div class="screen-width-100 bgcolor-333 padding-10 font-size-25 font-family-cursive font-weight-bold color-ffa margin-right-10">Previewer</div>
+			</div>
+			<div class="display-flex screen-width-100">
+				<div class="screen-width-100 border" id="chooser">
+					<div class="container padding-10">
+						<h1> More GUI Examples: </h1>
+						<div style="background-color: red;padding:5px;"></div>
+						<textarea rows=7 cols=32 placeholder="textarea"></textarea>
+						<br/>
+						<input type="text" placeholder="input field">
+						<select id="dropdown"><option value="itm1"> item1 </option><option value="itm2"> item2 </option><option value="itm3"> item3 </option></select>
+						<input type="button" value="Button">
+						<form>
+						<input name="asd" type="radio"/>
+						<input name="asd" type="checkbox"/>
+						<input name="asd" type="checkbox"/>
+						<input name="asd" type="radio"/>
+						</form>
+						<p style="font-weight: normal;">Normal</p>
+						<p style="font-weight: bold;">Bold</p>
+						<i> italic </i>
+						<u>underline</u>
+						<p style="font-weight: bold;"><i><u>bold italic underline</u></i></p>
+						<p style="font-family: san-serif;"> Serif style text</p>
+						<p style="letter-spacing: 5px;">Spaced text</p>
+						<h1>Heading 1</h1>
+						<h2>Heading 2</h2>
+						<h3>Heading 3</h3>
+						<h4>Heading 4</h4>
+						<h5>Heading 5</h5>
+						<h6>Heading 6</h6>
+						<p style="font-size: 50px;">Big</p>
+						<p align="center">Centered title</p>
+					</div>
+				</div>
+				<div class="screen-width-100 border">
+					<div class="font-size-25 inactive shadow-black">
+						<div class="display-inline inactive">
+							<div class="display-inline font-family-cursive inactive">Font size</div>
+							<select id="fontSize" class="inactive" onchange="if (previewer.getElementsByClassName('active')[0]) previewer.getElementsByClassName('active')[0].style.fontSize=this.value+'px';">
+								<option value=1>1</option><option value=2>2</option><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option><option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option><option value=16>16</option><option value=17>17</option><option value=18>18</option><option value=19>19</option><option value=20>20</option><option value=21>21</option><option value=22>22</option><option value=23>23</option><option value=24>24</option><option value=25>25</option><option value=26>26</option><option value=27>27</option><option value=28>28</option><option value=29>29</option><option value=30>30</option><option value=31>31</option><option value=32>32</option><option value=33>33</option><option value=34>34</option><option value=35>35</option><option value=36>36</option><option value=37>37</option><option value=38>38</option><option value=39>39</option><option value=40>40</option><option value=41>41</option><option value=42>42</option><option value=43>43</option><option value=44>44</option><option value=45>45</option><option value=46>46</option><option value=47>47</option><option value=48>48</option><option value=49>49</option><option value=50>50</option><option value=51>51</option><option value=52>52</option><option value=53>53</option><option value=54>54</option><option value=55>55</option><option value=56>56</option><option value=57>57</option><option value=58>58</option><option value=59>59</option><option value=60>60</option><option value=61>61</option><option value=62>62</option><option value=63>63</option><option value=64>64</option><option value=65>65</option><option value=66>66</option><option value=67>67</option><option value=68>68</option><option value=69>69</option><option value=70>70</option><option value=71>71</option><option value=72>72</option><option value=73>73</option><option value=74>74</option><option value=75>75</option><option value=76>76</option><option value=77>77</option><option value=78>78</option><option value=79>79</option><option value=80>80</option><option value=81>81</option><option value=82>82</option><option value=83>83</option><option value=84>84</option><option value=85>85</option><option value=86>86</option><option value=87>87</option><option value=88>88</option><option value=89>89</option><option value=90>90</option><option value=91>91</option><option value=92>92</option><option value=93>93</option><option value=94>94</option><option value=95>95</option><option value=96>96</option><option value=97>97</option><option value=98>98</option><option value=99>99</option><option value=100>100</option><option value=101>101</option><option value=102>102</option><option value=103>103</option><option value=104>104</option><option value=105>105</option><option value=106>106</option><option value=107>107</option><option value=108>108</option><option value=109>109</option><option value=110>110</option><option value=111>111</option><option value=112>112</option><option value=113>113</option><option value=114>114</option><option value=115>115</option><option value=116>116</option><option value=117>117</option><option value=118>118</option><option value=119>119</option><option value=120>120</option>
+							</select>
+						</div>
+						<div class="display-inline inactive">
+							<div class="display-inline inactive">Color</div>
+							<input class="inactive" type="color" onchange="if (previewer.getElementsByClassName('active')[0]) previewer.getElementsByClassName('active')[0].style.color=this.value;">
+						</div>
+						<div class="display-inline inactive">
+							<div class="display-inline inactive">Bgcolor</div>
+							<input class="inactive" type="color" onchange="if (previewer.getElementsByClassName('active')[0]) previewer.getElementsByClassName('active')[0].style.backgroundColor=this.value;">
+						</div>
+						<div class="display-inline inactive">
+							<div class="display-inline font-family-cursive inactive">Padding</div>
+							<select id="fontSize" class="inactive" onchange="if (previewer.getElementsByClassName('active')[0]) previewer.getElementsByClassName('active')[0].style.padding=this.value+'px';">
+								<option value=1>1</option><option value=2>2</option><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option><option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option><option value=16>16</option><option value=17>17</option><option value=18>18</option><option value=19>19</option><option value=20>20</option><option value=21>21</option><option value=22>22</option><option value=23>23</option><option value=24>24</option><option value=25>25</option><option value=26>26</option><option value=27>27</option><option value=28>28</option><option value=29>29</option><option value=30>30</option><option value=31>31</option><option value=32>32</option><option value=33>33</option><option value=34>34</option><option value=35>35</option><option value=36>36</option><option value=37>37</option><option value=38>38</option><option value=39>39</option><option value=40>40</option><option value=41>41</option><option value=42>42</option><option value=43>43</option><option value=44>44</option><option value=45>45</option><option value=46>46</option><option value=47>47</option><option value=48>48</option><option value=49>49</option><option value=50>50</option><option value=51>51</option><option value=52>52</option><option value=53>53</option><option value=54>54</option><option value=55>55</option><option value=56>56</option><option value=57>57</option><option value=58>58</option><option value=59>59</option><option value=60>60</option><option value=61>61</option><option value=62>62</option><option value=63>63</option><option value=64>64</option><option value=65>65</option><option value=66>66</option><option value=67>67</option><option value=68>68</option><option value=69>69</option><option value=70>70</option><option value=71>71</option><option value=72>72</option><option value=73>73</option><option value=74>74</option><option value=75>75</option><option value=76>76</option><option value=77>77</option><option value=78>78</option><option value=79>79</option><option value=80>80</option><option value=81>81</option><option value=82>82</option><option value=83>83</option><option value=84>84</option><option value=85>85</option><option value=86>86</option><option value=87>87</option><option value=88>88</option><option value=89>89</option><option value=90>90</option><option value=91>91</option><option value=92>92</option><option value=93>93</option><option value=94>94</option><option value=95>95</option><option value=96>96</option><option value=97>97</option><option value=98>98</option><option value=99>99</option><option value=100>100</option><option value=101>101</option><option value=102>102</option><option value=103>103</option><option value=104>104</option><option value=105>105</option><option value=106>106</option><option value=107>107</option><option value=108>108</option><option value=109>109</option><option value=110>110</option><option value=111>111</option><option value=112>112</option><option value=113>113</option><option value=114>114</option><option value=115>115</option><option value=116>116</option><option value=117>117</option><option value=118>118</option><option value=119>119</option><option value=120>120</option>
+							</select>
+						</div>
+						<div class="display-inline inactive">
+							<div class="display-inline font-family-cursive inactive">Margin</div>
+							<select id="fontSize" class="inactive" onchange="if (previewer.getElementsByClassName('active')[0]) previewer.getElementsByClassName('active')[0].style.margin=this.value+'px';">
+								<option value=1>1</option><option value=2>2</option><option value=3>3</option><option value=4>4</option><option value=5>5</option><option value=6>6</option><option value=7>7</option><option value=8>8</option><option value=9>9</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option><option value=16>16</option><option value=17>17</option><option value=18>18</option><option value=19>19</option><option value=20>20</option><option value=21>21</option><option value=22>22</option><option value=23>23</option><option value=24>24</option><option value=25>25</option><option value=26>26</option><option value=27>27</option><option value=28>28</option><option value=29>29</option><option value=30>30</option><option value=31>31</option><option value=32>32</option><option value=33>33</option><option value=34>34</option><option value=35>35</option><option value=36>36</option><option value=37>37</option><option value=38>38</option><option value=39>39</option><option value=40>40</option><option value=41>41</option><option value=42>42</option><option value=43>43</option><option value=44>44</option><option value=45>45</option><option value=46>46</option><option value=47>47</option><option value=48>48</option><option value=49>49</option><option value=50>50</option><option value=51>51</option><option value=52>52</option><option value=53>53</option><option value=54>54</option><option value=55>55</option><option value=56>56</option><option value=57>57</option><option value=58>58</option><option value=59>59</option><option value=60>60</option><option value=61>61</option><option value=62>62</option><option value=63>63</option><option value=64>64</option><option value=65>65</option><option value=66>66</option><option value=67>67</option><option value=68>68</option><option value=69>69</option><option value=70>70</option><option value=71>71</option><option value=72>72</option><option value=73>73</option><option value=74>74</option><option value=75>75</option><option value=76>76</option><option value=77>77</option><option value=78>78</option><option value=79>79</option><option value=80>80</option><option value=81>81</option><option value=82>82</option><option value=83>83</option><option value=84>84</option><option value=85>85</option><option value=86>86</option><option value=87>87</option><option value=88>88</option><option value=89>89</option><option value=90>90</option><option value=91>91</option><option value=92>92</option><option value=93>93</option><option value=94>94</option><option value=95>95</option><option value=96>96</option><option value=97>97</option><option value=98>98</option><option value=99>99</option><option value=100>100</option><option value=101>101</option><option value=102>102</option><option value=103>103</option><option value=104>104</option><option value=105>105</option><option value=106>106</option><option value=107>107</option><option value=108>108</option><option value=109>109</option><option value=110>110</option><option value=111>111</option><option value=112>112</option><option value=113>113</option><option value=114>114</option><option value=115>115</option><option value=116>116</option><option value=117>117</option><option value=118>118</option><option value=119>119</option><option value=120>120</option>
+							</select>
+						</div>
+					</div>
+					<div class="padding-10" id="previewer">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="export" class="modal">
+			<div class="container">
+				<div class="modal-header">
+					<div class="modal-title">Finalise and export</div>
+					<a class="modal-close hover-rotate-360" href="#">×</a>
+					<div class="clear"></div>
+				</div>
+				<div class="modal-field">
+					<div class="section">
+						<div class="modal-field-header font-size-30">Project Information</div>
+						<div class="field">
+							<label class="label" for="wn">Webpage Name</label>
+							<input class="input" name="wn" id="wn" placeholder="Webpage Name" required="">
+						</div>
+					</div>
+					<div class="modal-btn button" onclick="exportElementHTML(previewer,wn.value)">Proceed</div>
+				</div>
+			</div>
+		</div>
+		<div id="upload" class="modal">
+			<div class="container">
+				<div class="modal-header">
+					<div class="modal-title">Upload</div>
+					<a class="modal-close hover-rotate-360" href="#">×</a>
+					<div class="clear"></div>
+				</div>
+				<div class="modal-field">
+					<div class="section">
+						<div class="modal-field-header font-size-30">Project Information</div>
+						<div class="field">
+							<div>
+								<label class="label" for="page">Upload HTML</label>
+								<input type="file" id="page" accept="text/html" onchange="openFileInHTML(this.files[0],previewer)">
+							</div>
+							<div>
+								<label class="label" for="styles">Upload Styles</label>
+								<input type="file" id="styles" accept="text/css" onchange="openStylesInHTML(this.files[0],previewer)" multiple>
+							</div>
+						</div>
+					</div>
+					<div class="modal-btn button screen-width-100 text-align-center margin-20"><a class="color-070 mouse-over-color-fff" href="#">Proceed</a></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		chooser.addEventListener('click',(e)=>{if (!(e.srcElement==chooser)&&(!e.srcElement.classList.contains('container'))) previewer.innerHTML+=e.srcElement.outerHTML});
+		previewer.addEventListener('click',(e)=>{if (!(e.srcElement==previewer)&&(!e.srcElement.classList.contains('inactive'))) {if (previewer.getElementsByClassName('active')[0]) previewer.getElementsByClassName('active')[0].classList.remove('active');e.srcElement.classList.add('active');}});
+	</script>
+</html>

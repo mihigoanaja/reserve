@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<title>VAT Calculator</title>
+		<link rel="stylesheet" href="/lock/coding/css/stylemate-2.0.0.css"/>
+		<link rel="stylesheet" href="/lock/coding/css/text-align-center.css"/>
+		<!-- <link rel="stylesheet" href="/lock/coding/css/modal-layout.css"/> -->
+		<link rel="stylesheet" href="/lock/coding/css/border-width-1.0.0.css"/>
+		<link rel="stylesheet" href="/lock/coding/css/width-1.0.0.css"/>
+		<link rel="stylesheet" href="/lock/coding/css/screen-width-1.0.0.css"/>
+		<link rel="stylesheet" href="/lock/coding/css/font-family-consolas.css"/>
+		<link rel="stylesheet" href="/lock/coding/css/screen-layout.css"/>
+		<link rel="stylesheet" href="/lock/coding/css/full.css"/>
+		<link rel="stylesheet" href="/lock/coding/css/display-1.0.0.css"/>
+		<link rel="stylesheet" href="/lock/coding/css/centered.css"/>
+		<style>
+			.display-flex-important {
+				display: flex !important;
+			}
+			.height-fit-content {
+				height: fit-content;
+			}
+			.text-decoration-none {
+				text-decoration: none;
+			}
+		</style>
+		<script>
+			function getFinalPrice(p,t){
+				t=(100-parseFloat(t))/100;
+				p=parseFloat(p);
+				return Math.ceil(p/t);
+			}
+			function getInitialPrice(p,t){
+				t=parseFloat(t)/100;
+				p=parseFloat(p);
+				return parseInt(p-(p*t));
+			}
+		</script>
+	</head>
+	<body class="margin-0 text-align-center screens">
+		<div class="screen">
+		<div class="margin-0 bgcolor-333 text-align-center modal target full display-flex-important centered">
+			<div class="bgcolor-9f6 modal-container padding-10 border-radius-20 height-fit-content" style="box-shadow: 0 0 20px 10px #240;">
+				<a href="#" class="display-inline-block bgcolor-b84 color-fff padding-18 font-size-30 font-family-consolas border-radius-25 font-weight-bold text-decoration-none margin-10">Final Price</a>
+				<a href="#initial" class="display-inline-block bgcolor-333 color-fff padding-18 font-size-30 font-family-consolas border-radius-25 font-weight-bold text-decoration-none margin-10">Initial Price</a>
+				<!-- input -->
+				<div class="bgcolor-06f margin-10 padding-10 border-radius-20">
+					<div class="font-size-30 margin-10">Input</div>
+					<input class="font-size-30 bgcolor-ffa border-radius-20 border-width-0 padding-10 screen-width-60" id="price1" type="number" placeholder="Initial Price" onchange="output1.value=getFinalPrice(price1.value,tax1.value)">
+					<input class="font-size-30 bgcolor-ffa border-radius-20 border-width-0 padding-10 width-100" id="tax1" type="number" placeholder="Tax Rate" onchange="output1.value=getFinalPrice(price1.value,tax1.value)">
+					<label class="font-size-30 font-family-consolas">%</label>
+				</div>
+				<!-- output -->
+				<div class="bgcolor-06f margin-10 padding-10 border-radius-20">
+					<div class="font-size-30 margin-10">Output</div>
+					<input class="font-size-30 border-radius-20 bgcolor-ffe padding-10 color-000 border-width-0" id="output1" value="1" disabled>
+				</div>
+			</div>
+		</div>
+		</div>
+		<!-- screen 2 -->
+		<div id="initial" class="screen">
+		<div class="margin-0 bgcolor-333 text-align-center display-flex-important centered">
+			<div class="bgcolor-9f6 modal-container padding-10 border-radius-20" style="box-shadow: 0 0 20px 10px #240;">
+				<a href="#" class="display-inline-block bgcolor-333 color-fff padding-18 font-size-30 font-family-consolas border-radius-25 font-weight-bold text-decoration-none margin-10">Final Price</a>
+				<a href="#initial" class="display-inline-block bgcolor-b84 color-fff padding-18 font-size-30 font-family-consolas border-radius-25 font-weight-bold text-decoration-none margin-10">Initial Price</a>
+				<!-- input -->
+				<div class="bgcolor-06f margin-10 padding-10 border-radius-20">
+					<div class="font-size-30 margin-10">Input</div>
+					<input class="font-size-30 bgcolor-ffa border-radius-20 border-width-0 padding-10 screen-width-60" id="price" type="number" placeholder="Final Price" onchange="output.value=getInitialPrice(price.value,tax.value)">
+					<input class="font-size-30 bgcolor-ffa border-radius-20 border-width-0 padding-10 width-100" id="tax" type="number" placeholder="Tax Rate" onchange="output.value=getInitialPrice(price.value,tax.value)">
+					<label class="font-size-30 font-family-consolas">%</label>
+				</div>
+				<!-- output -->
+				<div class="bgcolor-06f margin-10 padding-10 border-radius-20">
+					<div class="font-size-30 margin-10">Output</div>
+					<input class="font-size-30 border-radius-20 bgcolor-ffe padding-10 color-000 border-width-0" id="output" value="1" disabled>
+				</div>
+			</div>
+		</div>
+		</div>
+	</body>
+</html>

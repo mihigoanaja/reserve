@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<title>Button Generator</title>
+		<meta name="viewport" content="initial-scale=1,width=device-width">
+		<link rel="stylesheet" href="\lock\coding\CSS\normalise-1.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\stylemate-1.0.0.min.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\form-style-1.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\centered.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\font-family-cooper.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\font-weight-bold.css"/>
+		<link rel="stylesheet" href="\lock\coding\CSS\showcase-layout.css"/>
+		<style>
+			.btngen {
+				width: fit-content;
+			}
+		</style>
+		<script>
+			function generateBtnHTML(text="",link="#",color="#000",bg="#ddd"){
+				var btn=document.createElement('button');
+				var anchor=document.createElement('a');
+				btn.innerText=text;
+				btn.style.color=color;
+				btn.style.backgroundColor=bg;
+				anchor.innerHTML=btn.outerHTML;
+				anchor.href=link;
+				return anchor.outerHTML;
+			}
+		</script>
+	</head>
+	<body>
+		<div class="content centered">
+			<div class="btngen showcase">
+				<form class="form-style-1 showcase-row nosubmit">
+					<div class="showcase-item bgcolor-36c">
+						<h1 class="color-fff">Button Generator</h1>
+						<label><span>Weblink</span></label><input class="input-field" id="btnLink">
+						<label><span>Button Text</span></label><input class="input-field" id="btnText">
+						<label><span>Text Color</span></label><input id="btnColor" type="color">
+						<label><span>Background Color</span></label><input id="btnBGColor" type="color" value="#dadada">
+						<div align="center"><button class="margin-10" onclick="codes.value=previewer.innerHTML=generateBtnHTML(btnText.value,btnLink.value,btnColor.value,btnBGColor.value);copy.innerText='Copy'">GENERATE</button></div>
+					</div>
+					<div class="showcase-item bgcolor-36c">
+						<h1 class="color-fff">Generated Button</h1>
+						<div>
+							<div class="previewer">
+								<div>Preview</div>
+								<div id="previewer">
+								</div>
+							</div>
+							<div>
+								<div>Codes</div>
+								<textarea class="textarea-field" id="codes" onchange="this.nextElementSibling.innerText='Copy'"></textarea>
+								<button id="copy" onclick="navigator.clipboard.writeText(codes.value);this.innerHTML='Copied...'">Copy</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<script>
+			for (let f of document.getElementsByClassName('nosubmit'))
+				f.addEventListener('submit',e=>e.preventDefault());
+		</script>
+	</body>
+</html>

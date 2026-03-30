@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ROA - Intelligent Assistant</title>
+<style>
+  :root {
+    --primary-color: #4a90e2;
+    --secondary-color: #355c8a;
+    --bg-color: #f9fbfd;
+    --text-color: #333;
+    --border-radius: 10px;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background-color: var(--bg-color);
+    font-family: var(--font-family);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    user-select: none;
+  }
+  #app {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 6px 20px rgb(69 104 220 / 0.15);
+    width: 100%;
+    max-width: 400px;
+    padding: 20px 25px 30px 25px;
+    display: flex;
+    flex-direction: column;
+  }
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-align: center;
+    color: var(--primary-color);
+    user-select: text;
+  }
+  #input {
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  #input:focus {
+    border-color: var(--secondary-color);
+  }
+  button {
+    margin-top: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+  }
+  button:hover,
+  button:focus {
+    background-color: var(--secondary-color);
+  }
+  #output {
+    margin-top: 25px;
+    background: #eef3fb;
+    border-radius: var(--border-radius);
+    padding: 15px 20px;
+    min-height: 100px;
+    font-size: 1rem;
+    white-space: pre-wrap;
+    color: var(--text-color);
+    user-select: text;
+  }
+  @media screen and (max-width: 450px) {
+    #app {
+      max-width: 100%;
+      padding: 15px 20px 25px;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    #input, button {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <div id="app">
+    <h1>ROA - Intelligent Assistant</h1>
+    <input type="text" id="input" aria-label="Ask ROA" placeholder="Ask me about weather, time, jokes or general knowledge..." autocomplete="off" />
+    <button id="askBtn" aria-label="Ask ROA Button">Ask ROA</button>
+    <div id="output" role="region" aria-live="polite" aria-atomic="true">Hi! I am ROA. Ask me anything.</div>
+  </div>
+
+  <script>
+    const inputField = document.getElementById('input');
+    const outputDiv = document.getElementById('output');
+    const askBtn = document.getElementById('askBtn');
+
+    // OpenWeatherMap API setup - free demo key (limited)
+    const OPEN_WEATHER_API_KEY = 'b6907d289e10d714a6e88b30761fae22';
+
+    // Utility function: sanitize input
+    function sanitizeInput(text) {
+      return text.trim().toLowerCase();
+    }
+
+    // Fetch weather info by city (using OpenWeatherMap sample endpoint)
+    async function fetchWeather(city) {
+      const url = `https://openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${OPEN_WEATHER_API_KEY}&units=metric`;
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Weather data not available');
+        const data = await response.json();
+        if (data.cod !== 200) throw new Error(data.message || 'Error fetching weather');
+        return `Weather in ${data.name}: ${data.weather[0].description}, temperature ${data.main.temp}°C, humidity ${data.main.humidity}%.`;
+      } catch (e) {
+        return `Sorry, I couldn't fetch the weather for "${city}". Please try a different city or check spelling.`;
+      }
+    }
+
+    // Fetch a random joke from JokeAPI
+    async function fetchJoke() {
+      try {
+        const response = await fetch('https://v2.jokeapi.dev/joke/Any?type=single');
+        if (!response.ok) throw new Error('Joke API error');
+        const data = await response.json();
+        return data.joke || "Sorry, I couldn't find a joke right now.";
+      } catch {
+        return 'Sorry, I failed to fetch a joke right now.';
+      }
+    }
+
+    // Get current time formatted string
+    function getCurrentTime() {
+      const now = new Date();
+      return `Current time is ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}.`;
+    }
+
+    // Wikipedia API fetch summary (free public API for general knowledge)
+    async function fetchWikiSummary(query) {
+      const apiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`;
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error('Wikipedia API error');
+        const data = await response.json();
+        if (data.extract) {
+          return `${data.extract}`;
+          return `According to Wikipedia:\n${data.extract}`;
+        } else {
+			return "Sorry, I'm not sure about that at this time.";
+			return "Sorry, I couldn't find information on that topic.";
+        }
+      } catch (error) {
+			return "Sorry, I'm not sure about that at this time.";
+			return "Sorry, I couldn't retrieve information from Wikipedia at this time.";
+      }
+    }
+
+    // Core AI response logic with public APIs
+    async function getResponse(userInput) {
+      const text = sanitizeInput(userInput);
+
+      if (!text) return "Please type something to get a response.";
+
+      // Rules-based responses
+      if (text.includes('hello') || text.includes('hi') || text.includes('hey')) {
+        return 'Hello! How can I assist you today? Ask me about weather, time, jokes, or general knowledge!';
+      }
+      if (text.includes('how are you')) {
+        return "I'm an AI assistant, always ready to help you!";
+      }
+      if (text.includes('your name')) {
+        return "I am ROA, your intelligent assistant.";
+      }
+      if (text.includes('help')) {
+        return "Try asking about weather (e.g., 'weather in London'), current time, jokes, or general knowledge questions.";
+      }
+
+      // Weather query - "weather in {city}"
+      const weatherMatch = text.match(/weather in ([a-zA-Z\s]+)/i);
+      if (weatherMatch) {
+        const city = weatherMatch[1];
+        return await fetchWeather(city);
+      }
+      // Generic weather fallback if 'weather' in input
+      if (text.includes('weather')) {
+        const afterWeather = text.split('weather')[1].trim();
+        if (afterWeather) {
+          return await fetchWeather(afterWeather);
+        } else {
+          return await fetchWeather('London');
+        }
+      }
+
+      // Time query
+      if (text.includes('time')) {
+        return getCurrentTime();
+      }
+
+      // Joke query
+      if (text.includes('joke')) {
+        return await fetchJoke();
+      }
+
+      // Otherwise, treat input as a Wikipedia general knowledge query
+      return await fetchWikiSummary(userInput);
+    }
+
+    async function handleAsk() {
+      const userInput = inputField.value;
+      if (!userInput.trim()) {
+        outputDiv.textContent = 'Please enter a question or statement.';
+        return;
+      }
+      outputDiv.textContent = 'Thinking... 🤖';
+      inputField.disabled = true;
+      askBtn.disabled = true;
+
+      const response = await getResponse(userInput);
+
+      outputDiv.textContent = response;
+      inputField.disabled = false;
+      askBtn.disabled = false;
+      inputField.focus();
+      inputField.value = '';
+    }
+
+    askBtn.addEventListener('click', handleAsk);
+    inputField.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleAsk();
+      }
+    });
+
+    window.onload = () => {
+      inputField.focus();
+    };
+  </script>
+</body>
+</html>
+

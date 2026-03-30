@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>CSV to SQL Query Converter</title>
+	<link rel="stylesheet" href="\lock\coding\CSS\gold-theme-1.css">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		h1 {
+			text-align: center;
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-bottom: 20px;
+		}
+		form label, form input[type="submit"] {
+			margin-top: 10px;
+		}
+		form input[type="file"] {
+			margin-top: 20px;
+		}
+		textarea {
+			width: 100%;
+			height: 300px;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h1>CSV to SQL Query Converter</h1>
+	<form>
+		<label for="csv-file">Choose a CSV file to upload:</label>
+		<input type="file" id="csv-file" accept=".csv">
+		<label for="table-name">Enter the name of the SQL table:</label>
+		<input type="text" id="table-name" placeholder="Table name">
+		<input type="submit" value="Convert"><button onclick="copyToClipboard()" id="copyBtn">Copy to Clipboard</button>
+	</form>
+	<textarea id="sql-statements" placeholder="SQL statements will be displayed here"></textarea>
+	<script>
+		document.querySelector('form').addEventListener('submit', function(event) {
+			event.preventDefault();
+			const file = document.getElementById('csv-file').files[0];
+			const tableName = document.getElementById('table-name').value.trim();
+			if (file && tableName.length > 0) {
+				const reader = new FileReader();
+				reader.onload = function() {
+					const csv = reader.result;
+					const lines = csv.split('\n');
+					const headers = lines[0].split(',');
+					const values = lines.slice(1).map(line => line.split(','));
+					const sql = `INSERT INTO ${tableName} (${headers.join(', ')}) VALUES\n${values.map(row => `(${row.map(value => `'${value}'`).join(', ')})`).join(',\n')};`;
+					document.getElementById('sql-statements').value = sql;
+				}
+				reader.readAsText(file);
+			}
+		});
+		function copyToClipboard() {
+			const textarea = document.getElementById("sql-statements");
+			textarea.select();
+			document.execCommand("copy");
+			copyBtn.innerText="Copied...";
+		}
+	</script>
+</body>
+</html>

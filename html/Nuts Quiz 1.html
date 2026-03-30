@@ -1,0 +1,240 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="/lock/coding/css/stylemate-2.0.0.css"/>
+		<link rel="stylesheet" href="/lock/coding/css/modal-layout.css"/>
+		<link rel="stylesheet" href="/lock/coding/css/layer.css"/>
+		<link rel="stylesheet" href="/lock/coding/css/font-family-consolas.css"/>
+		<link rel="stylesheet" href="/lock/coding/css/text-align-center.css"/>
+		<style>
+			body {
+				margin: 0px;
+			}
+			[onclick] {
+				cursor: hand;
+			}
+			.section {
+				border: 1px solid #000;
+				padding: 10px;
+				margin: 10px;
+			}
+			.clear {
+				clear: both;
+			}
+			.section .header {
+				font-size: 29px;
+				font-family: cursive;
+			}
+			.modal .container {
+				background-color: #6bf;
+				padding: 10px;
+			}
+			.modal .section {
+				background-color: #ffa;
+				border: 1px solid #00f;
+				box-shadow: 0 0 5px #000;
+			}
+			.modal .button {
+				background-color: #ffe;
+				width: fit-content;
+				padding: 10px;
+				margin: auto;
+				box-shadow: 0 0 5px #000;
+				border-radius: 20px;
+			}
+			.modal .button:hover {
+				cursor: hand;
+				color: #ffe;
+				background-color: #070;
+				box-shadow: 0 0 15px #fff;
+			}
+			.controls {
+				background-color: #09f;
+				margin-bottom: 10px;
+			}
+			.controls .listener {
+				display: inline-block;
+				margin: 10px;
+				padding: 10px;
+				font-size: 29px;
+				font-family: impact;
+				cursor: hand;
+			}
+			.controls .listener:any-link {
+				text-decoration: none;
+				color: #000;
+			}
+			.controls .container {
+				width: fit-content;
+				margin: auto;
+			}
+			.controls .listener:hover {
+				color: #ffe;
+				text-shadow: 0 0 10px #000;
+				text-transform: uppercase;
+			}
+			.hover-rotate-360:hover {
+				transform: rotate(360deg);
+				transition: 0.5s;
+			}
+			.question {
+				padding: 10px;
+				width: 92%;
+				margin: auto;
+				background-color: #ffa;
+			}
+			.question-options {
+				padding: 10px;
+				margin: auto;
+				width: fit-content;
+				max-width: 100%;
+			}
+			.question-options .qo-item {
+				padding: 5px;
+				font-size: 32px;
+				font-weight: bold;
+				background-color: #09f;
+				display: inline-block;
+				margin: 5px;
+				border-radius: 8px;
+				box-shadow: 0 0 8px #000;
+				color: #fff;
+				font-family: cursive,consolas;
+				text-transform: lowercase;
+			}
+			.question-options .qo-item:hover {
+				background-color: #fff;
+				box-shadow: 0 0 8px #05f;
+				color: #09f;
+				text-transform: capitalize;
+			}
+			.report {
+ 				padding: 10px;
+				width: 92%;
+				margin: auto;
+				background-color: #9f4;
+			}
+			.report-metrics {
+				font-size: 25px;
+				font-family: arial,consolas;
+				max-width: 100%;
+				padding: 10px;
+			}
+			.report-metrics .question-count:before {
+				content: "Questions: ";
+			}
+			.report-metrics .duration:before {
+				content: "Duration: ";
+			}
+			.report-metrics .duration:after {
+				content: "s";
+			}
+			.report-metrics .score:before {
+				content: "Score: ";
+			}
+			.report-metrics .score:after {
+				content: "%";
+			}
+			.report-metrics .nuts-version:before {
+				content: "Nuts Version: ";
+			}
+			.controls {
+				width: 92%;
+				margin: auto;
+				padding: 10px;
+			}
+			.align-items-center {
+				align-items: center;
+			}
+			body:has(:target) {
+				display: block;
+			}
+		</style>
+		<script>
+			var qc=0;
+			var score=0;
+			var quiz=[];
+			quiz.push(["Which Nuts command adds 2 numeric values?",["Add","Brk","Chke","Cta","Cts","Dly","Emt","Nuts","Set","Subtract"],"Add"]);
+			quiz.push(["Which Nuts suspends the execution until the user press anykey?",["Add","Brk","Chke","Cta","Cts","Dly","Emt","Nuts","Set","Subtract"],"Brk"]);
+			quiz.push(["Which Nuts command compares 2 numeric values to check if they are equal?",["Add","Brk","Chke","Cta","Cts","Dly","Emt","Nuts","Set","Subtract"],"Chke"]);
+			quiz.push(["Which Nuts command creates a text area?",["Add","Brk","Chke","Cta","Cts","Dly","Emt","Nuts","Set","Subtract"],"Cta"]);
+			quiz.push(["Which Nuts command cleans the screen?",["Add","Brk","Chke","Cta","Cts","Dly","Emt","Nuts","Set","Subtract"],"Cts"]);
+			quiz.push(["Which Nuts command delays the execution for a specified number of seconds?",["Add","Brk","Chke","Cta","Cts","Dly","Emt","Nuts","Set","Subtract"],"Dly"]);
+			quiz.push(["Which Nuts command displays text on the screen?",["Add","Brk","Chke","Cta","Cts","Dly","Emt","Nuts","Set","Subtract"],"Emt"]);
+			quiz.push(["Which Nuts command switches the Nuts programming environment?",["Add","Brk","Chke","Cta","Cts","Dly","Emt","Nuts","Set","Subtract"],"Nuts"]);
+			quiz.push(["Which Nuts command creates or updates a variable?",["Add","Brk","Chke","Cta","Cts","Dly","Emt","Nuts","Set","Subtract"],"Set"]);
+			quiz.push(["Which Nuts command subtracts 1 numeric value from the other?",["Add","Brk","Chke","Cta","Cts","Dly","Emt","Nuts","Set","Subtract"],"Subtract"]);
+			function setQuestion(qas) {
+				qc+=1;
+				document.querySelector(".question-count").innerText=qc;
+				qac=parseInt(Math.random()*qas.length);
+				qa=qas[qac];
+				document.querySelector(".question .question-text").innerText=qa[0];
+				document.querySelector(".question .question-options").innerHTML="";
+				for (i of qa[1])
+					document.querySelector(".question .question-options").innerHTML+=`<div class=\"qo-item\" onclick=\"evalOption(quiz,this.innerText);\">${i}</div>`;
+				score==0?document.querySelector(".score").innerText=0:document.querySelector(".score").innerText=(score/(qc-1))*100;
+			}
+			function evalOption(qas,t){
+				if (qas[qac][2].toLowerCase()==t.toLowerCase())
+					score+=1;
+				setQuestion(quiz);
+			}
+			function startTimer() {
+				time=0;
+				pause=false;
+				setInterval(()=>{if (!pause) {time+=1;document.querySelector(".duration").innerText=time}},1000);
+			}
+			function resetAll() {
+				time=0;
+				score=0;
+				qc=0;
+				document.querySelector(".question-count").innerText=1;
+			}
+		</script>
+	</head>
+	<body class="display-flex align-items-center" onload="setQuestion(quiz);startTimer();">
+		<div class="content layer">
+			<div class="question">
+				<div class="question-text font-size-29 font-family-consolas font-weight-bold text-align-center">Which Nuts suspends the execution until the user press anykey?</div>
+				<div class="question-options">
+					<div class="qo-item">add</div>
+					<div class="qo-item">brk</div>
+					<div class="qo-item">emt</div>
+				</div>
+			</div>
+			<div class="report">
+				<div class="report-header font-size-32 font-family-consolas font-weight-bold bgcolor-f90 padding-10 border-radius-12">Report</div>
+				<div class="report-metrics">
+					<div class="question-count">3</div>
+					<div class="duration">120</div>
+					<div class="score">66.66</div>
+					<div class="nuts-version">1</div>
+				</div>
+			</div>
+			<div class="controls">
+				<div class="container">
+					<div class="listener" onclick="resetAll()">Reset</div><div class="listener" onclick="if (pause) {this.innerText='Pause'} else {this.innerText='Resume'};pause=!pause;">Pause</div><a class="listener" href="#export">Export</a>
+				</div>
+			</div>
+		</div>
+		<div id="export" class="modal">
+			<div class="container">
+				<div class="modal-header">
+					<div class="modal-title">Finalise and export</div>
+					<a class="modal-close hover-rotate-360" href="#">&times;</a>
+					<div class="clear"></div>
+				</div>
+				<div class="modal-field">
+					<div class="section">
+						<div class="header">Personal Information</div>
+						<div class="field">
+							<label class="label" for="pn">Name</label>
+							<input class="input" name="pn" id="pn" placeholder="Name" required />
+						</div>
+					</div>
+					<div class="modal-btn button" onclick="exportProgram()">Proceed</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
