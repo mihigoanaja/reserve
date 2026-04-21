@@ -19,8 +19,8 @@ function containsMarkdown(str) {
   a=new marked.Marked();
   marker=a.parse;
   if ((document.getElementById("post-body")||document.getElementsByClassName("post-body")[0]||document.getElementsByClassName("prose-content")[0]).getElementsByClassName("not-markdown")[0]||false) return;
-  var text = (document.getElementById("post-body")||document.getElementsByClassName("post-body")[0]).innerHTML;
-  var test = (document.getElementById("post-body")||document.getElementsByClassName("post-body")[0]).innerText;
+  var text = (document.getElementById("post-body")||document.getElementsByClassName("post-body")[0]||document.getElementsByClassName("prose-content")[0]).innerHTML;
+  var test = (document.getElementById("post-body")||document.getElementsByClassName("post-body")[0]||document.getElementsByClassName("prose-content")[0]).innerText;
   if (containsMarkdown(test)) {
     var html = marker(text);
     
