@@ -16,7 +16,8 @@
         { type: 'css', url: 'https://reserve.alreflections.net/css/styleSubstackPosts-V1.css' },
         { type: 'js', url: 'https://onetag.alreflections.net/atinas-analytics.js' },
         { type: 'css', url: 'https://reserve.alreflections.net/css/responsiveYouTubeiFrame-V1.css' },
-        { type: 'js', url: 'https://onetag.alreflections.net/adsterra.js' }
+        { type: 'js', url: 'https://onetag.alreflections.net/adsterra.js' },
+        { type: 'js', url: 'https://onetag.pages.dev/nlPopup.js' }
     ];
 
     // Loop through the resources and add them to the document
