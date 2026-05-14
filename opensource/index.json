@@ -2,5 +2,9 @@
     {
         "name":"Infocratiz",
         "installs":"https://reserve.alreflections.net/opensource/infocratiz/index.json"
+    },
+    {
+        "name":"Feedslinker",
+        "installs":"https://reserve.alreflections.net/opensource/feedslinker/index.json"
     }
 ]
