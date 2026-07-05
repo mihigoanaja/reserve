@@ -1,4 +1,5 @@
 Array.from(document.getElementsByClassName('atinas-results')).forEach(async (resultsContainer)=>{
+	if (resultsContainer.innerHTML=='') return;
 	let r = resultsContainer;
     let renderer=await fetch("https://reserve.alreflections.net/json/atinas-apis.json");
     let apijson=await renderer.json();
