@@ -24,7 +24,9 @@ Array.from(document.getElementsByClassName('atinas-results')).forEach(async (res
 					<a class='button' href='${result.link}' target='_blank'>Read More</a>
 				`;
 				if ((resultsContainer.dataset.limit == undefined) || (resultsContainer.dataset.limit >= resultCount)) {
-					resultsContainer.appendChild(resultDiv);
+					if (resultsContainer.innerHTML=='') {
+						resultsContainer.appendChild(resultDiv);
+					}
 				}
 			});
             if (resultsContainer.innerHTML!='') {
