@@ -13,6 +13,7 @@ Array.from(document.getElementsByClassName('atinas-results')).forEach(async (res
 			if (resultsContainer.classList.contains('reverse')) {
 				data.reverse();
 			}
+			if (resultsContainer.innerHTML!='') return;
 			data.forEach(result => {
 				resultCount++;
 				var resultDiv=document.createElement("div");
@@ -24,9 +25,7 @@ Array.from(document.getElementsByClassName('atinas-results')).forEach(async (res
 					<a class='button' href='${result.link}' target='_blank'>Read More</a>
 				`;
 				if ((resultsContainer.dataset.limit == undefined) || (resultsContainer.dataset.limit >= resultCount)) {
-					if (resultsContainer.innerHTML=='') {
-						resultsContainer.appendChild(resultDiv);
-					}
+					resultsContainer.appendChild(resultDiv);
 				}
 			});
             if (resultsContainer.innerHTML!='') {
