@@ -8,7 +8,7 @@ Array.from(document.getElementsByClassName('atinas-results')).forEach(async (res
 	fetch(url)
 		.then(response => response.json())
 		.then(data => {
-			resultsContainer.innerHTML = '';
+			//resultsContainer.innerHTML = '';
 			let resultCount = 0;
 			if (resultsContainer.classList.contains('reverse')) {
 				data.reverse();
