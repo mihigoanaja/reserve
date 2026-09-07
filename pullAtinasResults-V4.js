@@ -22,7 +22,7 @@ Array.from(document.getElementsByClassName('atinas-results')).forEach(async (res
 					<img src='${result.image}' style='${(r.dataset.showImage=="yes")||"display:none;"}'/>
 					<h2>${result.title}</h2>
 					<p class='description'>${result.description}</p>
-					<a class='button' href='${result.link}' target='_blank'>Read More</a>
+					<a class='button' href='${result.link}' target='_blank'>Open Full Content</a>
 				`;
 				if ((resultsContainer.dataset.limit == undefined) || (resultsContainer.dataset.limit >= resultCount)) {
 					resultsContainer.appendChild(resultDiv);
