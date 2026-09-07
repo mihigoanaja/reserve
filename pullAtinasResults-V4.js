@@ -19,7 +19,7 @@ Array.from(document.getElementsByClassName('atinas-results')).forEach(async (res
 				var resultDiv=document.createElement("div");
 				resultDiv.classList.add("result");
 				resultDiv.innerHTML= `
-					<img src='${result.image}' style='${(r.dataset.showImage=="yes")||"display:none;"}'/>
+					<img src='${result.image}' style='${(r.dataset.showImage=="yes")||"display:none;"}' alt='${result.title}'/>
 					<h2>${result.title}</h2>
 					<p class='description'>${result.description}</p>
 					<a class='button' href='${result.link}' target='_blank'>Open Full Content</a>
